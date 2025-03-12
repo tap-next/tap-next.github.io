@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TAPNext provides a novel approach to point tracking by framing it as a next token prediction task">
+  <meta name="keywords" content="TAPNext Point Tracking Next Token Prediction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAPNext: Tracking Any Point (TAP) as Next Token Prediction</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="set_source(0);">
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://deepmind.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://tapvid.github.io/">
+            TAP-Vid Dataset
+          </a>
+          <a class="navbar-item" href="https://deepmind-tapir.github.io/">
+            TAPIR
+          </a>
+          <a class="navbar-item" href="https://robotap.github.io/">
+            RoboTAP
+          </a>
+          <a class="navbar-item" href="https://deepmind-tapir.github.io/blogpost.html">
+            TAPIR Blog Post
+          </a>
+          <a class="navbar-item" href="https://bootstap.github.io/">
+            BootsTAP
+          </a>
+          <a class="navbar-item" href="https://tapvid3d.github.io/">
+            TAPVid-3D
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TAPNext: Tracking Any Point (TAP) as Next Token Prediction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://artemzholus.github.io">Artem Zholus</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.carldoersch.com">Carl Doersch</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yangyi02.github.io">Yi Yang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://skoppula.com/">Skanda Koppula</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.co.uk/citations?user=hWzXZUMAAAAJ">Viorica Patraucean</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=UFx0gKcAAAAJ">Xu Owen He</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.irocco.info/">Ignacio Rocco</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://msajjadi.com/">Mehdi S. M. Sajjadi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sarathchandar.in/">Sarath Chandar</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://goroshin.github.io/">Ross Goroshin</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Google DeepMind,</span>
+            <span class="author-block"><sup>2</sup>MILA, Polytechnique Montréal</span>
+            <span class="author-block"><sup>3</sup>University College London</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/deepmind/tapnet"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/google-deepmind/tapnet/blob/main/colabs/tapnext_demo.ipynb"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <img src="https://colab.research.google.com/img/colab_favicon_256px.png" 
+                         alt="Colab" width="16" height="16">
+                  </span>
+                  <span>Colab</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline width="70%" style="display: block; margin: 0 auto;">
+        <source src="./static/videos/concat.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TAPNext</span> can track points on slender structures, such as horse legs or parachute cords.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Tracking Any Point (TAP) in a video is a challenging computer vision problem with many demonstrated applications in robotics, video editing, and 3D reconstruction. Existing methods for TAP rely heavily on complex tracking-specific inductive biases and heuristics, limiting their generality and potential for scaling. To address these challenges, we present TAPNext, a new approach that casts TAP as sequential masked token decoding. Our model is causal, tracks in a purely online fashion, and removes tracking-specific inductive biases. This enables TAPNext to run with minimal latency, and removes the temporal windowing required by many existing state of art trackers. Despite its simplicity, TAPNext achieves a new state-of-the-art tracking performance among both online and offline trackers. Finally, we present evidence that many widely used tracking heuristics emerge naturally in TAPNext through end-to-end training.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video Summary</h2>
+        <div class="publication-video">
+          <video id="summary" playsinline controls height="100%">
+            <source src="https://storage.googleapis.com/dm-tapnet/tapir_iccv_video2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- Arch. -->
+      <div class="column is-four-fifths">
+        <div class="content">
+          <h2 class="title is-3">Architecture</h2>
+          <img src="./static/images/overview.png"
+                 class="interpolation-image"
+                 alt="TAPIR architecture."/>
+          <p>
+          TAPNext redefines point tracking as a sequence of masked token prediction task. Our approach is inspired by modern language models, treating point trajectories in video as sequences of tokens.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <!-- Results. -->
+      <div class="column is-four-fifths">
+        <div class="content">
+          <h2 class="title is-3">TAP-Vid Query First Performance</h2>
+          <p>
+            The <a href="https://github.com/deepmind/tapnet">TAP-Vid benchmark</a> is a set of real and synthetic videos annotated with point tracks.  The metric, Average Jaccard, measures both accuracy in estimating position and occlusion.  Higher is better.
+          </p>
+          <table>
+            <tr>
+              <th><p style="text-align:left">Method</p></th>
+              <th><p style="text-align:center">DAVIS</p></th>
+              <th><p style="text-align:center">Kinetics</p></th>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">TAPTRv3</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">63.2</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">54.5</p></td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">CoTracker3</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">63.8</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">55.8</p></td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">TAPNext</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center"><b>65.2</b></p></td>
+              <td style="border-bottom: none;"><p style="text-align:center"><b>57.3</b></p></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <!-- Arch. -->
+    <div class="column is-four-fifths">
+      <div class="content">
+        <h2 class="title is-3">TAPNext versus Baselines</h2>
+        <p>
+          We compare TAPNext, Cotracker3, and BootsTAPIR on the DAVIS dataset. The results demonstrate TAPNext's superior performance in tracking accuracy and robustness, particularly in handling occlusions, large scale changes, and rapid motion.
+        </p>
+        
+        <div class="container" id="container-carousel-baselines">
+          <div id="results-carousel-baselines" class="carousel results-carousel">
+            <!-- Card 1: Scene 1 -->
+            <div class="card">
+              <div class="card-image">
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 33%;">TAPNext</td>
+                    <td style="text-align: center; width: 33%;">Cotracker3</td>
+                    <td style="text-align: center; width: 33%;">BootsTAPIR</td>
+                  </tr>
+                  <tr>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+    
+            <!-- Card 2: Scene 2 -->
+            <div class="card">
+              <div class="card-image">
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 33%;">TAPNext</td>
+                    <td style="text-align: center; width: 33%;">Cotracker3</td>
+                    <td style="text-align: center; width: 33%;">BootsTAPIR</td>
+                  </tr>
+                  <tr>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download2.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download2.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download2.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+    
+            <!-- Card 3: Scene 3 -->
+            <div class="card">
+              <div class="card-image">
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 33%;">TAPNext</td>
+                    <td style="text-align: center; width: 33%;">Cotracker3</td>
+                    <td style="text-align: center; width: 33%;">BootsTAPIR</td>
+                  </tr>
+                  <tr>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download3.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download3.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                    <td style="width: 33%;">
+                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                        <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download3.mp4" type="video/mp4">
+                      </video>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <!-- Arch. -->
+    <div class="column is-four-fifths">
+      <div class="content">
+        <h2 class="title is-3">Attention Visualization</h2>
+        <p>
+          The videos below visualize self-attention maps between point tokens and image patches or other point tokens.
+        </p>
+        <div class="columns is-centered">
+          <div class="column">
+            <h4 class="subtitle is-6">Image to Point Attention</h4>
+            <video controls muted loop playsinline height="480">
+              <source src="./static/videos/image_attention.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <h4 class="subtitle is-6">Point to Point Attention</h4>
+            <video controls muted loop playsinline height="480">
+              <source src="./static/videos/point_attention2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <!-- Arch. -->
+    <div class="column is-four-fifths">
+      <div class="content">
+        <h2 class="title is-3">Video Completion</h2>
+        <p>
+          We invert the tracking problem - we assume the whole sequence of points and their occlusion flags are given to the model but it needs to predict future values of pixels. As we describe it in the paper, we simply add a linear pixel decoder head on top of the TAPNext image tokens outputs. Note that this is not a generative model - it is trained with a simple l2 pixel regression target. This result shows how TAPNext stores and retrieves visual information.
+        </p>
+        <div class="columns is-centered">
+          <div class="column">
+            <video controls muted loop playsinline height="240">
+              <source src="./static/videos/video_completion/video_car.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls muted loop playsinline height="240">
+              <source src="./static/videos/video_completion/video_motorcycle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column">
+            <video controls muted loop playsinline height="240">
+              <source src="./static/videos/video_completion/video_zoom.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Work -->
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: 20px">Related Work</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our work is closely related to the following research:
+          </p>
+          <p>
+            <a href="https://github.com/google-deepmind/trecvit">TRecViT</a> - A Recurrent Video Transformer.
+          </p>
+          <p>
+            <a href="https://bootstap.github.io/">BootsTAP</a> - Bootstrapped Training for Tracking-Any-Point.
+          </p>
+          <p>
+            <a href="https://cotracker3.github.io/">CoTracker3</a> - Simpler and Better Point Tracking by Pseudo-Labelling Real Videos.
+          </p>
+          <p>
+            <a href="https://taptr.github.io/">TAPTR</a> - Track Any Point TRansformers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a href="https://github.com/tap-next/tap-next.github.io">source code</a> of this website, which itelf is a fork of <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
