@@ -80,7 +80,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">TAPNext: Tracking Any Point (TAP) as Next Token Prediction</h1>
+          <h2 class="title is-2 publication-title">TAPNext: Tracking Any Point (TAP) as Next Token Prediction</h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://artemzholus.github.io">Artem Zholus</a><sup>*2,4,5</sup>,
@@ -193,7 +193,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h3 class="title is-3">Abstract</h3>
         <div class="content has-text-justified">
           <p>
           Tracking Any Point (TAP) in a video is a challenging computer vision problem with many demonstrated applications in robotics, video editing, and 3D reconstruction. Existing methods for TAP rely heavily on complex tracking-specific inductive biases and heuristics, limiting their generality and potential for scaling. To address these challenges, we present TAPNext, a new approach that casts TAP as sequential masked token decoding. Our model is causal, tracks in a purely online fashion, and removes tracking-specific inductive biases. This enables TAPNext to run with minimal latency, and removes the temporal windowing required by many existing state of art trackers. Despite its simplicity, TAPNext achieves a new state-of-the-art tracking performance among both online and offline trackers. Finally, we present evidence that many widely used tracking heuristics emerge naturally in TAPNext through end-to-end training.
@@ -205,7 +205,7 @@
 
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video Summary</h2>
+        <h3 class="title is-3">Video Summary</h3>
         <div class="publication-video">
           <video id="summary" playsinline controls height="100%">
             <source src="https://storage.googleapis.com/dm-tapnet/tapir_iccv_video2.mp4"
@@ -221,7 +221,7 @@
       <!-- Arch. -->
       <div class="column is-four-fifths">
         <div class="content">
-          <h2 class="title is-3">Architecture</h2>
+          <h3 class="title is-3">Architecture</h3>
           <img src="./static/images/overview.png"
                  class="interpolation-image"
                  alt="TAPIR architecture."/>
@@ -235,7 +235,7 @@
       <!-- Results. -->
       <div class="column is-four-fifths">
         <div class="content">
-          <h2 class="title is-3">TAP-Vid Query First Performance</h2>
+          <h3 class="title is-3">TAP-Vid Query First Performance</h3>
           <p>
             The <a href="https://github.com/deepmind/tapnet">TAP-Vid benchmark</a> is a set of real and synthetic videos annotated with point tracks.  The metric, Average Jaccard, measures both accuracy in estimating position and occlusion.  Higher is better.
           </p>
@@ -270,7 +270,7 @@
     <!-- Arch. -->
     <div class="column is-four-fifths">
       <div class="content">
-        <h2 class="title is-3">TAPNext versus Baselines</h2>
+        <h3 class="title is-3">TAPNext versus Baselines</h3>
         <p>
           We compare TAPNext, Cotracker3, and BootsTAPIR on the DAVIS dataset. The results demonstrate TAPNext's superior performance in tracking accuracy and robustness, particularly in handling occlusions, large scale changes, and rapid motion.
         </p>
@@ -373,10 +373,9 @@
   </div>
 
   <div class="columns is-centered has-text-centered">
-    <!-- Arch. -->
     <div class="column is-four-fifths">
       <div class="content">
-        <h2 class="title is-3">Attention Visualization</h2>
+        <h3 class="title is-3">Attention Visualization</h3>
         <p>
           The videos below visualize self-attention maps between point tokens and image patches or other point tokens.
         </p>
@@ -399,10 +398,9 @@
   </div>
 
   <div class="columns is-centered has-text-centered">
-    <!-- Arch. -->
-    <div class="column is-four-fifths">
+    <div class="column is-full-width">
       <div class="content">
-        <h2 class="title is-3">Video Completion</h2>
+        <h3 class="title is-3">Video Completion</h3>
         <p>
           We invert the tracking problem - we assume the whole sequence of points and their occlusion flags are given to the model but it needs to predict future values of pixels. As we describe it in the paper, we simply add a linear pixel decoder head on top of the TAPNext image tokens outputs. Note that this is not a generative model - it is trained with a simple l2 pixel regression target. This result shows how TAPNext stores and retrieves visual information.
         </p>
@@ -433,7 +431,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3" style="margin-top: 20px">Related Work</h2>
+        <h3 class="title is-3" style="margin-top: 20px">Related Work</h3>
 
         <div class="content has-text-justified">
           <p>
