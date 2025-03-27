@@ -74,7 +74,6 @@
   </div>
 </nav>
 
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -292,17 +291,17 @@
                   </tr>
                   <tr>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download.mp4" type="video/mp4">
                       </video>
                     </td>
@@ -322,17 +321,17 @@
                   </tr>
                   <tr>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download2.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download2.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download2.mp4" type="video/mp4">
                       </video>
                     </td>
@@ -352,17 +351,17 @@
                   </tr>
                   <tr>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download3.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download3.mp4" type="video/mp4">
                       </video>
                     </td>
                     <td style="width: 33%;">
-                      <video style="width: 100%;" autoplay controls muted loop playsinline>
+                      <video style="width: 100%;" autoplay muted loop playsinline>
                         <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download3.mp4" type="video/mp4">
                       </video>
                     </td>
@@ -386,13 +385,13 @@
         <div class="columns is-centered">
           <div class="column">
             <h4 class="subtitle is-6">Image to Point Attention</h4>
-            <video autoplay controls muted loop playsinline height="240">
+            <video autoplay muted loop playsinline height="240">
               <source src="./static/videos/image_attention.mp4" type="video/mp4">
             </video>
           </div>
           <div class="column">
             <h4 class="subtitle is-6">Point to Point Attention</h4>
-            <video autoplay controls muted loop playsinline height="240">
+            <video autoplay muted loop playsinline height="240">
               <source src="./static/videos/point_attention2.mp4" type="video/mp4">
             </video>
           </div>
@@ -409,17 +408,17 @@
       </p>
       <div class="columns is-centered">
         <div class="column">
-          <video autoplay controls muted loop playsinline height="240">
+          <video autoplay muted loop playsinline height="240">
             <source src="./static/videos/video_completion/video_car.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
-          <video autoplay controls muted loop playsinline height="240">
+          <video autoplay muted loop playsinline height="240">
             <source src="./static/videos/video_completion/video_motorcycle.mp4" type="video/mp4">
           </video>
         </div>
         <div class="column">
-          <video autoplay controls muted loop playsinline height="240">
+          <video autoplay muted loop playsinline height="240">
             <source src="./static/videos/video_completion/video_zoom.mp4" type="video/mp4">
           </video>
         </div>
@@ -427,6 +426,39 @@
     </div>
   </div>
 
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Limitations</h3>
+        <p>
+        TAPNext has clear limitations. Particularly, we observe significant failure in long term point tracking when the number of video frames is beyond 150.  The issue are probably due to state space models are only trained with maximum 48 frames and cannot generalize to much longer video clips. This also brings opportunity to further significant improvement if we are able to tackle the long term tracking problem.
+        </p>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div class="content">
+              <table>
+                <tr>
+                  <td style="border-bottom: none;"><p style="text-align:left">
+                    <video autoplay muted loop playsinline height="100%">
+                      <source src="./static/videos/robotap_fail.mp4" type="video/mp4">
+                    </video>
+                  </p></td>
+                  <td style="border-bottom: none;"><p style="text-align:center">
+                    <video autoplay muted loop playsinline height="100%">
+                      <source src="./static/videos/rgb_stacking_fail.mp4" type="video/mp4">
+                    </video>
+                  </p></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
 </section>
 
 <!-- Related Work -->
