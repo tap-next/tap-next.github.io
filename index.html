@@ -418,6 +418,101 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content">
+          <h3 class="title is-3">More Examples</h3>
+          <p>
+            Here we visualize TAPNext on more videos from DAVIS and RoboTAP dataset.
+          </p>
+          <table>
+            <tr>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/1.mp4" type="video/mp4">
+                </video></td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/2.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/3.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/4.mp4" type="video/mp4">
+                </video></td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/5.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/6.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/7.mp4" type="video/mp4">
+                </video></td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/8.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/davis/9.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/1.mp4" type="video/mp4">
+                </video></td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/2.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/3.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/4.mp4" type="video/mp4">
+                </video></td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/5.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="border-bottom: none;">
+                <video autoplay muted loop playsinline width="256">
+                  <source src="./static/videos/robotap/6.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
           <h3 class="title is-3">Attention Visualization</h3>
           <p>
             The videos below visualize self-attention maps between point tokens and image patches or other point tokens. Larger attention weights corresponds to deeper color between the tokens. Note in the right video, motion segmentation naturally emerge from online point tracking.
@@ -477,7 +572,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-3">Limitations</h3>
         <p>
-        TAPNext has clear limitations. Particularly, we observe significant failure in long term point tracking when the number of video frames is beyond 150.  The issue are probably due to state space models are only trained with maximum 48 frames and cannot generalize to much longer video clips. This also brings opportunity to further significant improvement if we are able to tackle the long term tracking problem.
+        TAPNext has clear limitations. Particularly, we observe significant failure in long term point tracking when the number of video frames is beyond 150.  The issue is probably due to state space models are only trained with maximum 48 frames and cannot generalize to much longer video clips. This also brings opportunity to further significant improvement if we are able to tackle the long term tracking problem.
         </p>
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
