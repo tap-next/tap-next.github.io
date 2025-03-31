@@ -70,7 +70,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </nav>
 
@@ -230,7 +229,9 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <!-- Results. -->
       <div class="column is-four-fifths">
@@ -273,11 +274,47 @@
 
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
+      <!-- Results. -->
       <div class="column is-four-fifths">
         <div class="content">
-          <h3 class="title is-3">TAPNext versus Baselines</h3>
+          <h3 class="title is-3">Computational Speed</h3>
           <p>
-            We compare TAPNext, Cotracker3, and BootsTAPIR on the DAVIS dataset. The results demonstrate TAPNext's superior performance in tracking accuracy and robustness, particularly in handling occlusions, large scale changes, and rapid motion.
+            We benchmark the runtime speed and find TAPNext runs fast, reaching real-time inference when tracking 1024 query points.
+          </p>
+          <table>
+            <tr>
+              <th><p style="text-align:left">Model</p></th>
+              <th><p style="text-align:center">Latency, ms (H100)</p></th>              
+              <th><p style="text-align:center">Latency, ms (V100)</p></th>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">LocoTrack-B</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">8000</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">22800</p></td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">CoTracker3 (online)</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">177</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">576</p></td>
+            </tr>
+            <tr>
+              <td style="border-bottom: none;"><p style="text-align:left">TAPNext-B</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">5.33</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">23</p></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
+          <h3 class="title is-3">Qualitative Comparison</h3>
+          <p>
+            We visualize TAPNext, Cotracker3, and BootsTAPIR on the DAVIS dataset. We find TAPNext's superior performance in tracking accuracy and robustness, particularly in handling occlusions, large scale changes, and rapid motion. Pay Attention to the tracking on the foreground objects.
           </p>
           <div class="container" id="container-carousel-baselines">
             <div id="results-carousel-baselines" class="carousel results-carousel">
