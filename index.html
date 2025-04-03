@@ -277,28 +277,28 @@
       <!-- Results. -->
       <div class="column is-four-fifths">
         <div class="content">
-          <h3 class="title is-3">Computational Speed</h3>
+          <h3 class="title is-3">Computational Efficiency</h3>
           <p>
-            We benchmark the runtime speed and find TAPNext runs fast, reaching real-time inference when tracking 1024 query points.
+            Benchmarking results show that TAPNext delivers ultra-fast real-time inference, efficiently tracking 1,024 query points with minimal latency.
           </p>
           <table>
             <tr>
-              <th><p style="text-align:left">Model</p></th>
+              <th><p style="text-align:left"># Query Points</p></th>
               <th><p style="text-align:center">Latency, ms (H100)</p></th>              
               <th><p style="text-align:center">Latency, ms (V100)</p></th>
             </tr>
             <tr>
-              <td style="border-bottom: none;"><p style="text-align:left">LocoTrack-B</p></td>
-              <td style="border-bottom: none;"><p style="text-align:center">8000</p></td>
-              <td style="border-bottom: none;"><p style="text-align:center">22800</p></td>
+              <td style="border-bottom: none;"><p style="text-align:left">256</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">5.05</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">14.2</p></td>
             </tr>
             <tr>
-              <td style="border-bottom: none;"><p style="text-align:left">CoTracker3 (online)</p></td>
-              <td style="border-bottom: none;"><p style="text-align:center">177</p></td>
-              <td style="border-bottom: none;"><p style="text-align:center">576</p></td>
+              <td style="border-bottom: none;"><p style="text-align:left">512</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">5.26</p></td>
+              <td style="border-bottom: none;"><p style="text-align:center">18</p></td>
             </tr>
             <tr>
-              <td style="border-bottom: none;"><p style="text-align:left">TAPNext-B</p></td>
+              <td style="border-bottom: none;"><p style="text-align:left">1024</p></td>
               <td style="border-bottom: none;"><p style="text-align:center">5.33</p></td>
               <td style="border-bottom: none;"><p style="text-align:center">23</p></td>
             </tr>
@@ -316,99 +316,64 @@
           <p>
             We visualize TAPNext, Cotracker3, and BootsTAPIR on the DAVIS dataset. We find TAPNext's superior performance in tracking accuracy and robustness, particularly in handling occlusions, large scale changes, and rapid motion. Pay Attention to the tracking on the foreground objects.
           </p>
-          <div class="container" id="container-carousel-baselines">
-            <div id="results-carousel-baselines" class="carousel results-carousel">
-              <!-- Card 1: Scene 1 -->
-              <div class="card">
-                <div class="card-image">
-                  <table style="width: 100%;">
-                    <tr>
-                      <td style="text-align: center; width: 33%;">BootsTAPIR</td>
-                      <td style="text-align: center; width: 33%;">Cotracker3</td>
-                      <td style="text-align: center; width: 33%;">TAPNext</td>
-                    </tr>
-                    <tr>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-      
-              <!-- Card 2: Scene 2 -->
-              <div class="card">
-                <div class="card-image">
-                  <table style="width: 100%;">
-                    <tr>
-                      <td style="text-align: center; width: 33%;">BootsTAPIR</td>
-                      <td style="text-align: center; width: 33%;">Cotracker3</td>
-                      <td style="text-align: center; width: 33%;">TAPNext</td>
-                    </tr>
-                    <tr>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download2.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download2.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download2.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-      
-              <!-- Card 3: Scene 3 -->
-              <div class="card">
-                <div class="card-image">
-                  <table style="width: 100%;">
-                    <tr>
-                      <td style="text-align: center; width: 33%;">BootsTAPIR</td>
-                      <td style="text-align: center; width: 33%;">Cotracker3</td>
-                      <td style="text-align: center; width: 33%;">TAPNext</td>
-                    </tr>
-                    <tr>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download3.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download3.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                      <td style="width: 33%;">
-                        <video style="width: 100%;" autoplay muted loop playsinline>
-                          <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download3.mp4" type="video/mp4">
-                        </video>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <table>
+            <tr>
+              <td style="text-align: center; width: 33%;">BootsTAPIR</td>
+              <td style="text-align: center; width: 33%;">Cotracker3</td>
+              <td style="text-align: center; width: 33%;">TAPNext</td>
+            </tr>
+            <tr>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download2.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download2.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download2.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/bootstapir/download3.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/cotracker/download3.mp4" type="video/mp4">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
+                  <source src="./static/videos/tapnext_vs_cotracker3_vs_bootstapir/tapnext/download3.mp4" type="video/mp4">
+                </video>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -424,81 +389,69 @@
           </p>
           <table>
             <tr>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/1.mp4" type="video/mp4">
-                </video></td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/2.mp4" type="video/mp4">
                 </video>
               </td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/3.mp4" type="video/mp4">
                 </video>
               </td>
             </tr>
             <tr>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/4.mp4" type="video/mp4">
-                </video></td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/5.mp4" type="video/mp4">
                 </video>
               </td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/6.mp4" type="video/mp4">
                 </video>
               </td>
             </tr>
             <tr>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/7.mp4" type="video/mp4">
-                </video></td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/8.mp4" type="video/mp4">
                 </video>
               </td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/davis/9.mp4" type="video/mp4">
                 </video>
               </td>
             </tr>
             <tr>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
-                  <source src="./static/videos/robotap/1.mp4" type="video/mp4">
-                </video></td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
-                  <source src="./static/videos/robotap/2.mp4" type="video/mp4">
-                </video>
-              </td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
-                  <source src="./static/videos/robotap/3.mp4" type="video/mp4">
-                </video>
-              </td>
-            </tr>
-            <tr>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/robotap/4.mp4" type="video/mp4">
-                </video></td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+                </video>
+              </td>
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/robotap/5.mp4" type="video/mp4">
                 </video>
               </td>
-              <td style="border-bottom: none;">
-                <video autoplay muted loop playsinline width="256">
+              <td style="width: 33%; border-bottom: none;">
+                <video style="width: 100%;" autoplay muted loop playsinline>
                   <source src="./static/videos/robotap/6.mp4" type="video/mp4">
                 </video>
               </td>
