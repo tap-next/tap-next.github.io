@@ -507,7 +507,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-3">Video Completion</h3>
         <p>
-          We invert the tracking problem - we assume the whole sequence of points and their occlusion flags are given to the model but it needs to predict future values of pixels. As we describe it in the paper, we simply add a linear pixel decoder head on top of the TAPNext image tokens outputs. Note that this is not a generative model - it is trained with a simple l2 pixel regression target. This result shows how TAPNext stores and retrieves visual information.
+          We invert the traditional tracking problem: instead of predicting point trajectories, we provide the model with the full sequence of points and their occlusion flags, and task it with predicting future pixel values. As described in the paper, this is achieved by adding a simple linear pixel decoder head on top of the TAPNext image token outputs. Note that this is not a generative model—it is trained using a straightforward L2 pixel regression loss. This result highlights TAPNext’s ability to store and retrieve visual information effectively.
         </p>
         <div class="columns is-centered">
           <div class="column">
@@ -535,7 +535,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-3">Limitations</h3>
         <p>
-        TAPNext has clear limitations. Particularly, we observe significant failure in long term point tracking when the number of video frames is beyond 150.  The issue is probably due to state space models are only trained with maximum 48 frames and cannot generalize to much longer video clips. This also brings opportunity to further significant improvement if we are able to tackle the long term tracking problem.
+          TAPNext has clear limitations. In particular, we observe significant failures in long-term point tracking when the number of video frames exceeds 150. This limitation is likely due to the state-space models being trained on sequences of at most 48 frames, making it difficult for them to generalize to much longer video clips. However, this also presents an opportunity for substantial improvement—addressing the long-term tracking challenge could lead to significant performance gains.
         </p>
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
