@@ -402,6 +402,33 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content">
+          <h3 class="title is-3">Feature Visualization</h3>
+          <p>
+            We visualize the feature maps of video tokens from the final layer of the TAPNext model using Principal Component Analysis (PCA). To demonstrate the model's capabilities, we applied it to a camouflage video sequence and visualized its final layer feature representations. Remarkably, when processing the video sequence, the model successfully segmented the camouflaged animal purely based on motion cues, showcasing its exceptional ability to group tokens based on motion.
+          </p>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 8px;">
+                  <img src="./static/videos/moca/scorpionfish_0.gif" style="width: 18vw; max-width: 140px; aspect-ratio: 1; object-fit: cover;">
+                  <img src="./static/videos/moca/scorpionfish_0_pca.gif" style="width: 18vw; max-width: 140px; aspect-ratio: 1; object-fit: cover;">
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <img src="./static/videos/moca/snow_leopard_8.gif" style="width: 18vw; max-width: 140px; aspect-ratio: 1; object-fit: cover;">
+                  <img src="./static/videos/moca/snow_leopard_8_pca.gif" style="width: 18vw; max-width: 140px; aspect-ratio: 1; object-fit: cover;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content">
           <h3 class="title is-3">More Examples</h3>
           <p>
             Here we visualize TAPNext on more videos from DAVIS and RoboTAP dataset.
@@ -516,7 +543,7 @@
       <div class="column is-four-fifths">
         <h3 class="title is-3">Video Completion</h3>
         <p>
-          We invert the traditional tracking problem: instead of predicting point trajectories, we provide the model with the full sequence of points and their occlusion flags, and task it with predicting future pixel values. As described in the paper, this is achieved by adding a simple linear pixel decoder head on top of the TAPNext image token outputs. Note that this is not a generative model—it is trained using a straightforward L2 pixel regression loss. This result highlights TAPNext’s ability to store and retrieve visual information effectively.
+          We invert the traditional tracking problem: instead of predicting point trajectories, we provide the model with the full sequence of points and their occlusion flags, and task it with predicting future pixel values. As described in the paper, this is achieved by adding a simple linear pixel decoder head on top of the TAPNext image token outputs. Note that this is not a generative model—it is trained using a straightforward L2 pixel regression loss. This result highlights TAPNext's ability to store and retrieve visual information effectively.
         </p>
         <div class="columns is-centered">
           <div class="column">
