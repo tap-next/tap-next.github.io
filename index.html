@@ -404,23 +404,55 @@
         <div class="content">
           <h3 class="title is-3">Feature Visualization</h3>
           <p>
-            We visualize the feature maps of video tokens from the final layer of the TAPNext model using Principal Component Analysis (PCA). To demonstrate the model's capabilities, we applied it to a camouflage video sequence and visualized its final layer feature representations. Remarkably, when processing the video sequence, the model successfully segmented the camouflaged animal purely based on motion cues, showcasing its exceptional ability to group tokens based on motion.
+            We visualize the feature maps of video tokens from the final layer of the TAPNext model using Principal Component Analysis (PCA). To demonstrate the model's capabilities, we applied it to a camouflage video sequence and visualized its final layer feature representations. Remarkably, when processing the video sequence, the model successfully discovered the camouflaged animal purely based on motion cues, showcasing its exceptional ability to group tokens based on motion.
           </p>
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-              <div class="content">
-                <div style="display: flex; justify-content: center; gap: 16px;">
-                  <img src="./static/videos/moca/scorpionfish_0.gif" style="width: 140px; height: 140px; object-fit: contain;">
-                  <img src="./static/videos/moca/scorpionfish_0_pca.gif" style="width: 140px; height: 140px; object-fit: contain;">
-                  <img src="./static/videos/moca/snow_leopard_8.gif" style="width: 140px; height: 140px; object-fit: contain;">
-                  <img src="./static/videos/moca/snow_leopard_8_pca.gif" style="width: 140px; height: 140px; object-fit: contain;">
-                </div>
-              </div>
-            </div>
-          </div>
+          <table>
+            <tr>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/scorpionfish_0.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/scorpionfish_0_pca.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/snow_leopard_8.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/snow_leopard_8_pca.gif">
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/white_tailed_ptarmigan.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/white_tailed_ptarmigan_pca.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/plaice.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/plaice_pca.gif">
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/stick_insect_0.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/stick_insect_0_pca.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/crab_1.gif">
+              </td>
+              <td style="width: 25%; border-bottom: none;">
+                <img src="./static/videos/moca/crab_1_pca.gif">
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 
   <div class="container is-max-desktop">
