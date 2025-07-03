@@ -47,6 +47,27 @@ body {
 .publication-header .hero-body {
 }
 
+.conf {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 20px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the font bold */
+  color: #DAA520; /* Gold color for the trophy */
+  text-shadow: 1px 0px 1px #1616165e; /* Shadow to make it pop out */
+  padding: 5px 10px; /* Some padding around the text */
+  border: 2px solid #DAA520; /* Border to make it stand out */
+  border-radius: 10px; /* Rounded corners */
+  display: inline-flex; /* Using flex to align text and icon */
+  align-items: center; /* Center items vertically in the flex container */
+  background-color: rgba(218, 165, 32, 0.1); /* Light background */
+}
+
+.conf::after {
+  content: '\1F3C6'; /* Unicode for the trophy emoji */
+  margin-left: 8px; /* Space between the icon and text */
+  font-size: 24px; /* Slightly larger size for the icon */
+}
+
+
 .publication-title {
     font-family: 'Google Sans', sans-serif;
 }
